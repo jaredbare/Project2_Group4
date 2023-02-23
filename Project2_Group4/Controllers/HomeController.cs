@@ -35,7 +35,6 @@ namespace Project2_Group4.Controllers
         public IActionResult TaskForm()
         {
             ViewBag.Categories = _TaskContext.Categories.ToList();
-            //return View("MovieForm");
             return View();
         }
         [HttpPost]
@@ -45,11 +44,11 @@ namespace Project2_Group4.Controllers
             {
                 _TaskContext.Add(tm);
                 _TaskContext.SaveChanges();
-                return View("Confirm", tm);
+                return View("Confirmation", tm);
             }
             else
             {
-                ViewBag.Categories = _TaskContext.Categories.ToList();
+                ViewBag.Tasks = _TaskContext.Tasks.ToList();
                 return View();
             }
         }
