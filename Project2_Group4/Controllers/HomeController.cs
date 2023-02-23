@@ -55,10 +55,10 @@ namespace Project2_Group4.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int movieid)
+        public IActionResult Edit(int taskid)
         {
             ViewBag.Categories = _TaskContext.Categories.ToList();
-            var form = _TaskContext.Categories.Single(x => x.CategoryID == movieid);
+            var form = _TaskContext.Tasks.Single(x => x.TaskID == taskid);
             return View("Quad", form);
         }
         [HttpPost]
