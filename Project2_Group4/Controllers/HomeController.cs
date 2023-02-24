@@ -29,7 +29,8 @@ namespace Project2_Group4.Controllers
         
         public IActionResult Quad()
         {
-            return View();
+            var tasks = _TaskContext.Tasks.ToList();
+            return View(tasks);
         }
         [HttpGet]
         public IActionResult TaskForm()

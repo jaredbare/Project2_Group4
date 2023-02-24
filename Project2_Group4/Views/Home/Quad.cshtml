@@ -10,12 +10,6 @@
 <h2>@ViewData["Title"]</h2>
 <br />
 
-<style>
-    .rotate {
-        transform: rotate(90deg);
-    }
-</style>
-
 <div class=" container text-center border rounded border">
     <div class="row">
         <div class="col-sm font-weight-bolder border">Stephen Covey's Time Management Matrix</div>
@@ -37,6 +31,21 @@
                 <div class="col-sm border">Edit</div>
                 <div class="col-sm border">Delete</div>
             </div>
+
+            @foreach (var x in Model)
+            {
+                if (x.Quadrant == 1)
+                {
+                    <div class="row">
+                        <div class="col-sm">@x.Task</div>
+                        <div class="col-sm">@x.Deadline</div>
+                        <div class="col-sm">@x.Category.CategoryName</div>
+                        <div class="col-sm">@x.Completed</div>
+                        <div class="col-sm"><a asp-controller="Home" asp-action="Edit" asp-route-taskid="@x.TaskID">Edit</a></div>
+                        <div class="col-sm"><a asp-controller="Home" asp-action="Delete" asp-route-taskid="@x.TaskID">Delete</a></div>
+                    </div>
+                }
+            }
         </div>
         <div class="col-sm border">
             Quadrant 2
@@ -48,6 +57,21 @@
                 <div class="col-sm border">Edit</div>
                 <div class="col-sm border">Delete</div>
             </div>
+
+            @foreach (var x in Model)
+            {
+                if (x.Quadrant == 2)
+                {
+                    <div class="row">
+                        <div class="col-sm">@x.Task</div>
+                        <div class="col-sm">@x.Deadline</div>
+                        <div class="col-sm">@x.Category.CategoryName</div>
+                        <div class="col-sm">@x.Completed</div>
+                        <div class="col-sm"><a asp-controller="Home" asp-action="Edit" asp-route-taskid="@x.TaskID">Edit</a></div>
+                        <div class="col-sm"><a asp-controller="Home" asp-action="Delete" asp-route-taskid="@x.TaskID">Delete</a></div>
+                    </div>
+                }
+            }
         </div>
     </div>
     <div class="row">
@@ -62,6 +86,21 @@
                 <div class="col-sm border">Edit</div>
                 <div class="col-sm border">Delete</div>
             </div>
+
+            @foreach (var x in Model)
+            {
+                if (x.Quadrant == 3)
+                {
+                    <div class="row">
+                        <div class="col-sm">@x.Task</div>
+                        <div class="col-sm">@x.Deadline</div>
+                        <div class="col-sm">@x.Category.CategoryName</div>
+                        <div class="col-sm">@x.Completed</div>
+                        <div class="col-sm"><a asp-controller="Home" asp-action="Edit" asp-route-taskid="@x.TaskID">Edit</a></div>
+                        <div class="col-sm"><a asp-controller="Home" asp-action="Delete" asp-route-taskid="@x.TaskID">Delete</a></div>
+                    </div>
+                }
+            }
         </div>
         <div class="col-sm border">
             Quadrant 4
@@ -74,15 +113,21 @@
                 <div class="col-sm border">Delete</div>
             </div>
 
-            @*@foreach (var x in Model)
+            @foreach (var x in Model)
             {
-                <div>
-                    <div class="col-sm">@x.Task</div>
-                    <div class="col-sm">@x.Deadline</div>
-                    <div class="col-sm">@x.Quadrant</div>
-                    <div class="col-sm">@x.Category.CategoryName</div>
-                </div>*@
- 
+                if (x.Quadrant == 4)
+                    {
+                    <div class="row">
+                        <div class="col-sm">@x.Task</div>
+                        <div class="col-sm">@x.Deadline</div>
+                        <div class="col-sm">@x.Category.CategoryName</div>
+                        <div class="col-sm">@x.Completed</div>
+                        <div class="col-sm"><a asp-controller="Home" asp-action="Edit" asp-route-taskid="@x.TaskID">Edit</a></div>
+                        <div class="col-sm"><a asp-controller="Home" asp-action="Delete" asp-route-taskid="@x.TaskID">Delete</a></div>
+                    </div>
+                    }
+            }
+
         </div>
     </div>
 </div>
