@@ -11,8 +11,6 @@ namespace Project2_Group4.Controllers
 {
     public class HomeController : Controller
     {
-        //private blahContext DbContext { get; set; }
-
         private TaskDatabaseContext _TaskContext { get; set; }
         public HomeController(TaskDatabaseContext x)
         {
@@ -28,45 +26,60 @@ namespace Project2_Group4.Controllers
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
         
         public IActionResult Quad()
         {
             return View();
         }
-        
-        //[HttpGet]
-        //public IActionResult Edit(int movieid)
-        //{
-        //    ViewBag.Categories = _TaskContext.Categories.ToList();
-        //    var form = _TaskContext.Categories.Single(x => x.CategoryID == movieid);
-        //    return View("MovieForm", form);
-        //}
-        //[HttpPost]
-        //public IActionResult Edit(TaskModel response)
-        //{
-        //    _TaskContext.Update(response);
-        //    _TaskContext.SaveChanges();
-        //    return RedirectToAction("Display");
-        //}
-        //[HttpGet]
-        //public IActionResult Delete(int movieid)
-        //{
-        //    var form = _TaskContext.Categories.Single(x => x.CategoryID == movieid);
-        //    //ViewBag.Categories = daContext.Categories.ToList();
-        //    return View(form);
-        //}
-        //[HttpPost]
-        //public IActionResult Delete(TaskModel ar)
-        //{
-        //    _TaskContext.Categories.Remove(ar);
-        //    _TaskContext.SaveChanges();
-        //    return RedirectToAction("Display");
-        //}
+        [HttpGet]
+        public IActionResult TaskForm()
+        {
+            ViewBag.Categories = _TaskContext.Categories.ToList();
+            return View();
+        }
+        [HttpPost]
+        public IActionResult TaskForm(TaskModel tm)
+        {
+            if (ModelState.IsValid)
+            {
+                _TaskContext.Add(tm);
+                _TaskContext.SaveChanges();
+                return View("Confirmation", tm);
+            }
+            else
+            {
+                ViewBag.Tasks = _TaskContext.Tasks.ToList();
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int taskid)
+        {
+            ViewBag.Categories = _TaskContext.Categories.ToList();
+            var form = _TaskContext.Tasks.Single(x => x.TaskID == taskid);
+            return View("Quad", form);
+        }
+        [HttpPost]
+        public IActionResult Edit(TaskModel response)
+        {
+            _TaskContext.Update(response);
+            _TaskContext.SaveChanges();
+            return RedirectToAction("TaskForm");
+        }
+        [HttpGet]
+        public IActionResult Delete(int taskid)
+        {
+            var form = _TaskContext.Tasks.Single(x => x.TaskID == taskid);
+            //ViewBag.Categories = daContext.Categories.ToList();
+            return View(form);
+        }
+        [HttpPost]
+        public IActionResult Delete(TaskModel tm)
+        {
+            _TaskContext.Tasks.Remove(tm);
+            _TaskContext.SaveChanges();
+            return RedirectToAction("Quad");
+        }
     }
 }
