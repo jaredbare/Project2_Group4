@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Project2_Group4.Models;
 using System;
@@ -29,7 +30,8 @@ namespace Project2_Group4.Controllers
         
         public IActionResult Quad()
         {
-            var tasks = _TaskContext.Tasks.ToList();
+
+            var tasks = _TaskContext.Tasks.Include(x => x.Category).ToList();
             return View(tasks);
         }
         [HttpGet]
