@@ -2,28 +2,87 @@
     ViewData["Title"] = "Quandrants";
 }
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+@model List<TaskModel>
 
-<h2>@ViewData["Title"]</h2><br />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<div class=" container text-center border rounded">
-    <div class="row border">
+<h2>@ViewData["Title"]</h2>
+<br />
+
+<style>
+    .rotate {
+        transform: rotate(90deg);
+    }
+</style>
+
+<div class=" container text-center border rounded border">
+    <div class="row">
         <div class="col-sm font-weight-bolder border">Stephen Covey's Time Management Matrix</div>
     </div>
-    <div class="row border">
-        <div class="col-sm border"> </div>
-        <div class="col-sm border font-weight-bold">Urgent</div>
-        <div class="col-sm border font-weight-bold">Not Urgent</div>
+    <div class="row">
+        <div class="col-1 border"> </div>
+        <div class="col-sm border">Urgent</div>
+        <div class="col-sm border">Not Urgent</div>
     </div>
-    <div class="row border">
-        <div class="col-sm border font-weight-bold">Important</div>
-        <div class="col-sm border">Quadrant 1</div>
-        <div class="col-sm border">Quadrant 2</div>
+    <div class="row">
+        <div class="col-1 border">Important</div>
+        <div class="col-sm border">
+            Quadrant 1
+            <div class="row">
+                <div class="col-sm border">Task</div>
+                <div class="col-sm border">Date</div>
+                <div class="col-sm border">Cateogry</div>
+                <div class="col-sm border">Completed</div>
+                <div class="col-sm border">Edit</div>
+                <div class="col-sm border">Delete</div>
+            </div>
+        </div>
+        <div class="col-sm border">
+            Quadrant 2
+            <div class="row">
+                <div class="col-sm border">Task</div>
+                <div class="col-sm border">Date</div>
+                <div class="col-sm border">Cateogry</div>
+                <div class="col-sm border">Completed</div>
+                <div class="col-sm border">Edit</div>
+                <div class="col-sm border">Delete</div>
+            </div>
+        </div>
     </div>
-    <div class="row border">
-        <div class="col-sm border font-weight-bold">Not Important</div>
-        <div class="col-sm border">Quadrant 3</div>
-        <div class="col-sm border">Quadrant 4</div>
+    <div class="row">
+        <div class="col-1 border">Not Important</div>
+        <div class="col-sm border">
+            Quadrant 3
+            <div class="row">
+                <div class="col-sm border">Task</div>
+                <div class="col-sm border">Date</div>
+                <div class="col-sm border">Cateogry</div>
+                <div class="col-sm border">Completed</div>
+                <div class="col-sm border">Edit</div>
+                <div class="col-sm border">Delete</div>
+            </div>
+        </div>
+        <div class="col-sm border">
+            Quadrant 4
+            <div class="row">
+                <div class="col-sm border">Task</div>
+                <div class="col-sm border">Date</div>
+                <div class="col-sm border">Cateogry</div>
+                <div class="col-sm border">Completed</div>
+                <div class="col-sm border">Edit</div>
+                <div class="col-sm border">Delete</div>
+            </div>
+
+            @*@foreach (var x in Model)
+            {
+                <div>
+                    <div class="col-sm">@x.Task</div>
+                    <div class="col-sm">@x.Deadline</div>
+                    <div class="col-sm">@x.Quadrant</div>
+                    <div class="col-sm">@x.Category.CategoryName</div>
+                </div>*@
+ 
+        </div>
     </div>
 </div>
