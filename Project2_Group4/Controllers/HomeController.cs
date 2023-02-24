@@ -61,7 +61,7 @@ namespace Project2_Group4.Controllers
         {
             ViewBag.Categories = _TaskContext.Categories.ToList();
             var form = _TaskContext.Tasks.Single(x => x.TaskID == taskid);
-            return View("Quad", form);
+            return View("TaskForm", form);
         }
         [HttpPost]
         public IActionResult Edit(TaskModel response)
