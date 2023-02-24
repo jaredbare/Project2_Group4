@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "Submitted";
+}
+@model Project2_Group4.Models.TaskModel
+@if (Model.Completed == true)
+{
+    <h2>Form received but will not be displayed. Great job on finishing your task!</h2>
+}
+else
+{
+    <h2>Form received. Thank you</h2>
+}
