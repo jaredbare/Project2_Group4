@@ -18,7 +18,6 @@ namespace Project2_Group4.Models
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
-
             mb.Entity<Category>().HasData(
                 new Category
                 {
