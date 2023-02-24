@@ -68,7 +68,7 @@ namespace Project2_Group4.Controllers
         {
             _TaskContext.Update(response);
             _TaskContext.SaveChanges();
-            return RedirectToAction("TaskForm");
+            return RedirectToAction("Quad");
         }
         [HttpGet]
         public IActionResult Delete(int taskid)
