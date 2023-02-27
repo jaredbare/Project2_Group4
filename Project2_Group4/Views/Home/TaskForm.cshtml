@@ -3,15 +3,31 @@
 }
 @model Project2_Group4.Models.TaskModel
 <h1>Fill Out the Form</h1>
+<br />
 @*This is the task form that must be filled out by users*@
+
+<div>
+    <ul>Quadrant I: Important / Urgent</ul>
+    <ul>Quadrant II: Important / Not Urgent</ul>
+    <ul>Quadrant III: Not Important / Urgent</ul>
+    <ul>Quadrant IV: Not Important / Not Urgent</ul>
+</div>
+<br />
 <div>
     <form method="post">
         <label asp-for="Task">Task:</label>
         <input asp-for="Task" /><br />
         <label asp-for="Deadline">Deadline:</label>
-        <input asp-for="Deadline" /><br />
+        <input type="date" asp-for="Deadline" /><br />
+
         <label asp-for="Quadrant">Quadrant:</label>
-        <input asp-for="Quadrant" /><br />
+        <select asp-for="Quadrant">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+        </select><br />
+
         <label asp-for="Completed">Completed:</label>
         <select asp-for="Completed">
             <option value="false">No</option>
